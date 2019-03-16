@@ -3,13 +3,14 @@ package it.discovery.service;
 import java.util.List;
 
 import it.discovery.model.Book;
+import it.discovery.repository.BookRepository;
 import it.discovery.repository.DBBookRepository;
 
-public class MainBookService {
-	private final DBBookRepository repository = 
-			new DBBookRepository();
+public class BookServiceImpl  implements BookService {
+	private final BookRepository repository;
 	
-	public MainBookService() {
+	public BookServiceImpl(BookRepository repository) {
+		this.repository = repository;
 		System.out.println("Using db repository");
 	}
 	
