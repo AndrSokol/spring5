@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import it.discovery.model.Book;
@@ -19,6 +20,7 @@ import lombok.Setter;
  */
 
 @Repository
+@Qualifier("db")
 public class DBBookRepository implements BookRepository{
 	private final Map<Integer, Book> books = new HashMap<>();
 

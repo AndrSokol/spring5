@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import it.discovery.model.Book;
@@ -15,7 +17,7 @@ import it.discovery.service.BookServiceImpl;
 
 public class SpringStarter {
 	public static void main(String[] args) {
-		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-beans.xml")) {
+		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("it.discovery")) {
 
 //			BookService service;
 			BookService service = context.getBean(BookService.class);
