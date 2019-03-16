@@ -4,20 +4,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import it.discovery.config.AppConfiguration;
 import it.discovery.model.Book;
-import it.discovery.repository.BookRepository;
-import it.discovery.repository.DBBookRepository;
 import it.discovery.service.BookService;
-import it.discovery.service.BookServiceImpl;
 
 public class SpringStarter {
 	public static void main(String[] args) {
-		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("it.discovery")) {
+		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfiguration.class)) {
 
 //			BookService service;
 			BookService service = context.getBean(BookService.class);

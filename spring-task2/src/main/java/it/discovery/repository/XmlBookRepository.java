@@ -14,8 +14,8 @@ import it.discovery.model.Book;
 import lombok.Getter;
 import lombok.Setter;
 
-@Repository
-@Qualifier("xml")
+//@Repository
+//@Qualifier("xml")
 public class XmlBookRepository implements BookRepository {
 
     private final Map<Integer, Book> books = new HashMap<>();

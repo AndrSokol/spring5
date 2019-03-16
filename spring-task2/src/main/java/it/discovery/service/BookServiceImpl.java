@@ -10,15 +10,14 @@ import org.springframework.stereotype.Service;
 import it.discovery.model.Book;
 import it.discovery.repository.BookRepository;
 
-@Service
+//@Service
 public class BookServiceImpl implements BookService {
 
 
 	private final BookRepository repository;
 
-	@Autowired
-
-	public BookServiceImpl(@Qualifier("db") BookRepository repository) {
+//	@Autowired
+	public BookServiceImpl(BookRepository repository) {
 		this.repository = repository;
 		System.out.println("Using repository " + repository.getClass().getSimpleName());
 	}

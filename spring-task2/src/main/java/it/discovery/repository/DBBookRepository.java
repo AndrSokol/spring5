@@ -19,8 +19,8 @@ import lombok.Setter;
  *
  */
 
-@Repository
-@Qualifier("db")
+//@Repository
+//@Qualifier("db")
 public class DBBookRepository implements BookRepository{
 	private final Map<Integer, Book> books = new HashMap<>();
 
