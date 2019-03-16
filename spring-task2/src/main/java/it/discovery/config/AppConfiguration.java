@@ -14,17 +14,17 @@ import it.discovery.service.BookServiceImpl;
 public class AppConfiguration {
 
     @Bean
-    public BookService bookService(@Qualifier("db") BookRepository repository){
+    public BookService bookService(@Qualifier("xml") BookRepository repository){
         return new BookServiceImpl(repository);
     }
 
-    @Bean
+    @Bean(initMethod = "init", destroyMethod = "destroy")
     @Qualifier("db")
     public BookRepository dbBookRepository(){
         return new DBBookRepository();
     }
 
-    @Bean
+    @Bean(initMethod = "init", destroyMethod = "destroy")
     @Qualifier("xml")
     public BookRepository xmlBookRepository(){
         return new XmlBookRepository();
