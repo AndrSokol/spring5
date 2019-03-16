@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import it.discovery.model.Book;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +18,7 @@ import lombok.Setter;
  *
  */
 
-
+@Repository
 public class DBBookRepository implements BookRepository{
 	private final Map<Integer, Book> books = new HashMap<>();
 

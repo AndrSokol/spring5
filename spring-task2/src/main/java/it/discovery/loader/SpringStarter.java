@@ -1,7 +1,10 @@
 package it.discovery.loader;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import it.discovery.model.Book;
@@ -13,24 +16,9 @@ import it.discovery.service.BookServiceImpl;
 public class SpringStarter {
 	public static void main(String[] args) {
 		try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-beans.xml")) {
-			
-			BookService service = context.getBean("service", BookService.class);
-//			service = context.getBean("service");
 
-			int count = context.getBeanDefinitionCount();
-			System.out.println("all beans " + count);
-
-			String[] namesBookRepository = context.getBeanNamesForType(BookService.class);
-			System.out.println("BookService beans: ");
-			for (String name : namesBookRepository){
-				System.out.println(name);
-			}
-
-			String[] namesDBBookRepository = context.getBeanNamesForType(DBBookRepository.class);
-			System.out.println("DBBookRepository beans: ");
-			for (String name : namesDBBookRepository){
-				System.out.println(name);
-			}
+//			BookService service;
+			BookService service = context.getBean(BookService.class);
 
 			Book book = new Book();
 			book.setName("Introduction into Spring");
@@ -40,6 +28,15 @@ public class SpringStarter {
 
 			List<Book> books = service.findBooks();
 			System.out.println(books);
+
+			System.out.println("Total bean count: " + context.getBeanDefinitionCount());
+			System.out.println("Our beans: " +
+					Arrays.stream(context.getBeanDefinitionNames())
+							.map(context::getBean)
+							.map(Object::getClass)
+							.map(Class::getSimpleName)
+							.collect(Collectors.joining(",")))
+			;
 		}
 
 	}
