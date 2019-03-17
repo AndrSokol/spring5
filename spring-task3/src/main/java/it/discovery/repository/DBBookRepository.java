@@ -1,7 +1,12 @@
 package it.discovery.repository;
 
 import it.discovery.model.Book;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,17 +23,25 @@ import java.util.Map;
 //@Repository
 //@Qualifier("db")
 @RequiredArgsConstructor
+@ConfigurationProperties("db")
+@Component
+@Getter
+@Setter
 public class DBBookRepository implements BookRepository{
 	private final Map<Integer, Book> books = new HashMap<>();
 
 	private int counter = 0;
 
 	private final String server;
-
 	private final String db;
+
+	private String url;
+	private String login;
+	private String password;
 	
 	public void init() {
 		System.out.println("Started db repository with server:" + server + " and database: " + db );
+		System.out.println(String.format("!!!!!! url %s, login %s, pass %s", url, login, password));
 	}
 
 	public void destroy() {
