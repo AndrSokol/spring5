@@ -2,6 +2,7 @@ package it.discovery.service;
 
 import java.util.List;
 
+import it.discovery.logger.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,9 @@ public class BookServiceImpl implements BookService {
 
 	private final BookRepository repository;
 
+	@Autowired
+	List<Logger> loggers;
+
 //	@Autowired
 	public BookServiceImpl(BookRepository repository) {
 		this.repository = repository;
@@ -24,6 +28,7 @@ public class BookServiceImpl implements BookService {
 	
 	public void saveBook(Book book) {
 		repository.saveBook(book);
+		loggers.forEach(logger -> logger.log("Added book " + book));
 	}
 	
 	public Book findBookById(int id) {

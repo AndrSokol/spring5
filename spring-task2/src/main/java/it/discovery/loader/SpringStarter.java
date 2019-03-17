@@ -13,7 +13,7 @@ import it.discovery.service.BookService;
 public class SpringStarter {
 	public static void main(String[] args) {
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext()) {
-			context.getEnvironment().setActiveProfiles("dev","test");
+//			context.getEnvironment().setActiveProfiles("dev");
 			context.register(AppConfiguration.class);
 			context.refresh();
 
