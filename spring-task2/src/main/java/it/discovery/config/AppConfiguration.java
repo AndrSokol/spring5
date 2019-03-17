@@ -1,6 +1,7 @@
 package it.discovery.config;
 
 import it.discovery.beanprocessors.CustomBeanPostProcessor;
+import it.discovery.beanprocessors.InitBeanPostProcessor;
 import it.discovery.events.EventBus;
 import it.discovery.logger.FileLogger;
 import it.discovery.logger.Logger;
@@ -80,6 +81,11 @@ public class AppConfiguration {
         @Bean
         public BeanPostProcessor customBeanPostProcessor(){
             return new CustomBeanPostProcessor();
+        }
+
+        @Bean
+        public BeanPostProcessor initBeanPostProcessor(){
+            return new InitBeanPostProcessor();
         }
     }
 }

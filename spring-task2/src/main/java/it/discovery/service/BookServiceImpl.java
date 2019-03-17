@@ -2,6 +2,7 @@ package it.discovery.service;
 
 import java.util.List;
 
+import it.discovery.annotations.Init;
 import it.discovery.events.LogEvent;
 import it.discovery.logger.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,10 @@ public class BookServiceImpl implements BookService {
 
 	public List<Book> findBooks() {
 		return repository.findBooks();
+	}
+
+	@Init
+	public void init(){
+		System.out.println("Service Init");
 	}
 }
