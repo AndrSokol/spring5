@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import it.discovery.model.Book;
@@ -21,18 +23,15 @@ import lombok.Setter;
 
 //@Repository
 //@Qualifier("db")
+@RequiredArgsConstructor
 public class DBBookRepository implements BookRepository{
 	private final Map<Integer, Book> books = new HashMap<>();
 
 	private int counter = 0;
 
-	@Getter
-	@Setter
-	private String server = "localhost";
+	private final String server;
 
-	@Getter
-	@Setter
-	private String db = "library";
+	private final String db;
 	
 	public void init() {
 		System.out.println("Started db repository with server:" + server + " and database: " + db );
