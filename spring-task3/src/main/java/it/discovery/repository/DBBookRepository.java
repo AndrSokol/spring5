@@ -23,7 +23,7 @@ import java.util.Map;
 //@Repository
 //@Qualifier("db")
 @RequiredArgsConstructor
-@ConfigurationProperties("db")
+@ConfigurationProperties("user")
 @Component
 @Getter
 @Setter
@@ -40,7 +40,7 @@ public class DBBookRepository implements BookRepository{
 	private String password;
 	
 	public void init() {
-		System.out.println("Started db repository with server:" + server + " and database: " + db );
+		System.out.println("!!! Started db repository with server:" + server + " and database: " + db );
 		System.out.println(String.format("!!!!!! url %s, login %s, pass %s", url, login, password));
 	}
 

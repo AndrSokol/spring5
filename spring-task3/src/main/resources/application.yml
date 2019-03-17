@@ -1,0 +1,8 @@
+book:
+  server: local
+  db: test
+
+user:
+  url: wer1
+  login: wer2
+  password: wer3
