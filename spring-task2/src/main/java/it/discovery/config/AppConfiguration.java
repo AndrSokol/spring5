@@ -1,11 +1,13 @@
 package it.discovery.config;
 
+import it.discovery.beanprocessors.CustomBeanPostProcessor;
 import it.discovery.events.EventBus;
 import it.discovery.logger.FileLogger;
 import it.discovery.logger.Logger;
 import it.discovery.logger.MemoryLogger;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.*;
 
 import it.discovery.repository.BookRepository;
@@ -70,6 +72,14 @@ public class AppConfiguration {
         @Bean
         public EventBus eventBus(List<Logger> loggers){
             return new EventBus(loggers);
+        }
+    }
+
+    @Configuration
+    public class BeanPostProcessorsConfig{
+        @Bean
+        public BeanPostProcessor customBeanPostProcessor(){
+            return new CustomBeanPostProcessor();
         }
     }
 }
