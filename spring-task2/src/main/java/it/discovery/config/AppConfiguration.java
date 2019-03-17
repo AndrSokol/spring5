@@ -1,5 +1,6 @@
 package it.discovery.config;
 
+import it.discovery.events.EventBus;
 import it.discovery.logger.FileLogger;
 import it.discovery.logger.Logger;
 import it.discovery.logger.MemoryLogger;
@@ -17,6 +18,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
+
+import java.util.List;
 
 @Configuration
 @PropertySource("application.properties")
@@ -62,6 +65,11 @@ public class AppConfiguration {
         @Order(Ordered.HIGHEST_PRECEDENCE)
         public Logger memoryLogger(){
             return new MemoryLogger();
+        }
+
+        @Bean
+        public EventBus eventBus(List<Logger> loggers){
+            return new EventBus(loggers);
         }
     }
 }
