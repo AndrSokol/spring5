@@ -14,7 +14,6 @@ public class SpringStarter {
 	public static void main(String[] args) {
 		try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfiguration.class)) {
 
-//			BookService service;
 			BookService service = context.getBean(BookService.class);
 
 			Book book = new Book();
